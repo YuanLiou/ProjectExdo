@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 1055409939}
   - component: {fileID: 1055409938}
   - component: {fileID: 1055409937}
+  - component: {fileID: 1055409942}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -197,6 +198,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055409942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1055409936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c7e95fae7c24e07bbf0931b4ea874b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1225578531
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +221,7 @@ GameObject:
   - component: {fileID: 1225578534}
   - component: {fileID: 1225578535}
   - component: {fileID: 1225578536}
+  - component: {fileID: 1225578537}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -333,6 +346,23 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 256
+--- !u!95 &1225578537
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1225578531}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6bd1523b7820d441aa8e13c82a69309c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2126789223
 GameObject:
   m_ObjectHideFlags: 0

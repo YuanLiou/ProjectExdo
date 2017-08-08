@@ -1,12 +1,14 @@
 fileFormatVersion: 2
 guid: 10fc3e036f8bc46899685e53c5789664
-timeCreated: 1501604614
+timeCreated: 1501859801
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: spritesheet_players_0
-    21300002: spritesheet_players_1
+    21300002: spritesheet_players_walking_0
     21300004: spritesheet_players_2
+    21300006: spritesheet_players_walking_1
+    21300008: spritesheet_players_jump_1
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -101,6 +103,48 @@ TextureImporter:
         y: 512
         width: 104
         height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_players_walking_0
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 256
+        width: 112
+        height: 156
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 1, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_players_walking_1
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 0
+        width: 107
+        height: 152
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: spritesheet_players_jump_1
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 1792
+        width: 110
+        height: 157
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
