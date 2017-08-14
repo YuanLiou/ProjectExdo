@@ -11,6 +11,8 @@ public class PlatformGenerator : MonoBehaviour {
 	private float distanceBetweenPlatform;
 	public float platformDistanceBetweenMin;
 	public float platformDistanceBetweenMax;
+
+	public ObjectPooler objectPool;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,9 +24,11 @@ public class PlatformGenerator : MonoBehaviour {
 		if (transform.position.x < platformGenerationPoint.position.x) {
 			distanceBetweenPlatform = Random.Range(platformDistanceBetweenMin, platformDistanceBetweenMax);
 			transform.position = new Vector3(transform.position.x + platformWidth + distanceBetweenPlatform, transform.position.y, transform.position.z);
-			
-			// Generate new platform
-			Instantiate(platform, transform.position, transform.rotation);
+
+			GameObject newPlatform = objectPool.GetGameObject();
+			newPlatform.transform.position = transform.position;
+			newPlatform.transform.rotation = transform.rotation;
+			newPlatform.SetActive(true);
 		}
 	}
 }
