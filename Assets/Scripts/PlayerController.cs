@@ -4,27 +4,45 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	public float moveSpeed;
+
+	public float speedMutiplier;
+	public float speedIncreaseMilestone;
+	private float speedMilestoneCounts;
+	
 	public float jumpForce;
+	public float jumpTime;
+	private float jumpTimeCounter;
 	
 	// Ground checking properties
 	public bool isOnGround;
-	public LayerMask whatIsGround;
+	public LayerMask GroundLayer;
+
+	public Transform groundCheckPoint;
+	public float groundCheckRadius;
 
 	private Rigidbody2D myRigidbody;
-	private Collider2D myCollider;
 	private Animator myAnimator;
 
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody2D>();
-		myCollider = GetComponent<Collider2D>();
 		myAnimator = GetComponent<Animator>();
+		
+        speedMilestoneCounts = speedIncreaseMilestone;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Detect the ground
-		isOnGround = Physics2D.IsTouchingLayers(myCollider, whatIsGround);
+		isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, GroundLayer);
+		
+		// Speed up if pass the speed milestone
+		if (transform.position.x > speedMilestoneCounts) {
+			speedMilestoneCounts += speedIncreaseMilestone;
+			moveSpeed = moveSpeed * speedMutiplier;
+
+			speedIncreaseMilestone += speedIncreaseMilestone * speedMutiplier;
+		}
 		
 		// Moving right
 		myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
@@ -34,6 +52,21 @@ public class PlayerController : MonoBehaviour {
 			if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
 			}
+		}
+
+		if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) {
+			if (jumpTimeCounter > 0) {
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+				jumpTimeCounter -= Time.deltaTime;
+			}
+		}
+
+		if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
+			jumpTimeCounter = 0;    // Lock user keeping jumping
+		}
+
+		if (isOnGround) {
+			jumpTimeCounter = jumpTime;
 		}
 		
 		// Setup animators
