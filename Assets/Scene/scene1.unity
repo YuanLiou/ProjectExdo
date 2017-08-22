@@ -151,7 +151,8 @@ Prefab:
       propertyPath: m_Name
       value: Platform_7_x_1 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114723424620862046, guid: 85a6fd4de284e4c5185ea3f36f690b18, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 85a6fd4de284e4c5185ea3f36f690b18, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &44514483 stripped
@@ -501,7 +502,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114723424620862046, guid: 85a6fd4de284e4c5185ea3f36f690b18, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 85a6fd4de284e4c5185ea3f36f690b18, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1123338635
@@ -679,17 +681,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34a2e7cffbf44f6f802b647dacf8a28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 9
   speedMutiplier: 1.05
   speedIncreaseMilestone: 200
-  jumpForce: 11
+  jumpForce: 13
   jumpTime: 0.05
   isOnGround: 0
-  GroundLayer:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 256
   groundCheckPoint: {fileID: 1324339658}
   groundCheckRadius: 0.1
+  gameManager: {fileID: 1659138564}
 --- !u!95 &1225578537
 Animator:
   serializedVersion: 3
@@ -789,7 +792,7 @@ GameObject:
   - component: {fileID: 1517976858}
   m_Layer: 8
   m_Name: Catcher
-  m_TagString: Untagged
+  m_TagString: KillBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -893,6 +896,48 @@ Transform:
   - {fileID: 44514483}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1659138563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1659138565}
+  - component: {fileID: 1659138564}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1659138564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659138563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebd904aa94df84ef6981996ebc87a4d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  platformGenerator: {fileID: 316393761}
+  playerController: {fileID: 1225578536}
+--- !u!4 &1659138565
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1659138563}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.308956, y: -1.4973412, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2128056514
 GameObject:

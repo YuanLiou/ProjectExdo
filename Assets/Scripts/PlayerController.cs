@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 	public float moveSpeed;
+	private float moveSpeedOrigin;
 
 	public float speedMutiplier;
 	public float speedIncreaseMilestone;
+	private float speedIncreaseMilestoneOrigin;
 	private float speedMilestoneCounts;
+	private float speedMilestoneCountsOrigin;
 	
 	public float jumpForce;
 	public float jumpTime;
@@ -15,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Ground checking properties
 	public bool isOnGround;
-	public LayerMask GroundLayer;
+	public LayerMask groundLayer;
 
 	public Transform groundCheckPoint;
 	public float groundCheckRadius;
@@ -23,18 +26,24 @@ public class PlayerController : MonoBehaviour {
 	private Rigidbody2D myRigidbody;
 	private Animator myAnimator;
 
+	public GameManager gameManager;
+
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody2D>();
 		myAnimator = GetComponent<Animator>();
 		
         speedMilestoneCounts = speedIncreaseMilestone;
+
+		moveSpeedOrigin = moveSpeed;
+		speedMilestoneCountsOrigin = speedMilestoneCounts;
+		speedIncreaseMilestoneOrigin = speedIncreaseMilestone;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		// Detect the ground
-		isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, GroundLayer);
+		isOnGround = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, groundLayer);
 		
 		// Speed up if pass the speed milestone
 		if (transform.position.x > speedMilestoneCounts) {
@@ -72,5 +81,14 @@ public class PlayerController : MonoBehaviour {
 		// Setup animators
 		myAnimator.SetFloat("Speed", myRigidbody.velocity.x);
 		myAnimator.SetBool("IsOnGround", isOnGround);
+	}
+
+	private void OnCollisionEnter2D(Collision2D other) {
+		if (other.gameObject.CompareTag("KillBox")) {
+			gameManager.RestartGame();
+			moveSpeed = moveSpeedOrigin;
+			speedMilestoneCounts = speedMilestoneCountsOrigin;
+			speedIncreaseMilestone = speedIncreaseMilestoneOrigin;
+		}
 	}
 }
