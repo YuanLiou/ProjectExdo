@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 	public PlayerController playerController;
 	private Vector3 playerStartPoint;
 
-	private PlatformDestroyer[] platformDestroyers;
+	private ObjectDestroyer[] objectDestroyers;
 	private ScoreManager scoreManager;
 
 	// Use this for initialization
@@ -33,9 +33,9 @@ public class GameManager : MonoBehaviour {
 		playerController.gameObject.SetActive(false);
 		yield return new WaitForSeconds(0.5f);
 		
-		platformDestroyers = FindObjectsOfType<PlatformDestroyer>();
-		for (int i = 0; i < platformDestroyers.Length; i++) {
-			platformDestroyers[i].gameObject.SetActive(false);
+		objectDestroyers = FindObjectsOfType<ObjectDestroyer>();
+		for (int i = 0; i < objectDestroyers.Length; i++) {
+			objectDestroyers[i].gameObject.SetActive(false);
 		}
 		
 		playerController.transform.position = playerStartPoint;

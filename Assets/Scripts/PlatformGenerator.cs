@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour {
-
 	public Transform platformGenerationPoint;
 	private float platformWidth;
 	
@@ -22,6 +21,9 @@ public class PlatformGenerator : MonoBehaviour {
 	
 	public float maxHeightChange;
 	private float heightChange;
+
+	private DiamondsGenerator diamondsGenerator;
+	public float diamondsGenerateThreshold;
 	
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,8 @@ public class PlatformGenerator : MonoBehaviour {
 
 		minHeight = transform.position.y;    // same as PlatformGenerator's Height
 		maxHeight = maxHeightPoint.position.y;
+
+		diamondsGenerator = FindObjectOfType<DiamondsGenerator>();
 	}
 	
 	// Update is called once per frame
@@ -49,11 +53,15 @@ public class PlatformGenerator : MonoBehaviour {
 				heightChange = minHeight;
 			}
 			
-			GameObject newPlatform = objectPools[platformSelector].GetGameObject();
+			GameObject newPlatform = objectPools[platformSelector].GetPoolObject();
 			newPlatform.transform.position = transform.position;
 			newPlatform.transform.rotation = transform.rotation;
 			newPlatform.SetActive(true);
-			
+
+			if (Random.Range(0f, 100f) < diamondsGenerateThreshold) {
+                diamondsGenerator.SpawnDiamonds(new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z));
+			}
+
 			// Adjust the gap's size. move the platform generator to end of platform.
 			transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2), heightChange, transform.position.z);
 		}

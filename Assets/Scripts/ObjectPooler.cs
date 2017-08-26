@@ -19,7 +19,7 @@ public class ObjectPooler : MonoBehaviour {
 		}
 	}
 
-	public GameObject GetGameObject() {
+	public GameObject GetPoolObject() {
 		for (int i = 0; i < pooledObjects.Count; i++) {
 			// Get first non active pooled object.
 			if (!pooledObjects[i].activeInHierarchy) {

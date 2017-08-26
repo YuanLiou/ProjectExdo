@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class PlatformDestroyer : MonoBehaviour {
+public class ObjectDestroyer : MonoBehaviour {
 
 	public GameObject platformDescructionPoint;
 
