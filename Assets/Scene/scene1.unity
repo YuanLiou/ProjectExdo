@@ -267,7 +267,7 @@ MonoBehaviour:
   - {fileID: 1123338637}
   - {fileID: 734571409}
   maxHeightPoint: {fileID: 152545914}
-  maxHeightChange: 2
+  maxHeightChange: 2.5
   diamondsGenerateThreshold: 25
 --- !u!4 &316393761
 Transform:

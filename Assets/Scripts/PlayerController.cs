@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
 
 	public Transform groundCheckPoint;
 	public float groundCheckRadius;
+	private bool stopJumpping;
+	private bool canDoubleJumping;
 
 	private Rigidbody2D myRigidbody;
 	private Animator myAnimator;
@@ -60,10 +62,16 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
 			if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+				stopJumpping = false;
+			} else if (canDoubleJumping) {
+				canDoubleJumping = false;
+                jumpTimeCounter = jumpTime;
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+				stopJumpping = false;
 			}
 		}
 
-		if (Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) {
+		if ((Input.GetKey(KeyCode.Space) || Input.GetMouseButton(0)) && !stopJumpping) {
 			if (jumpTimeCounter > 0) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
 				jumpTimeCounter -= Time.deltaTime;
@@ -72,10 +80,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0)) {
 			jumpTimeCounter = 0;    // Lock user keeping jumping
+			stopJumpping = true;
 		}
 
 		if (isOnGround) {
 			jumpTimeCounter = jumpTime;
+			canDoubleJumping = true;
 		}
 		
 		// Setup animators
