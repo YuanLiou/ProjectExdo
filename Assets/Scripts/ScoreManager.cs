@@ -8,6 +8,7 @@ public class ScoreManager : MonoBehaviour {
 	public Text scoreText, highScoreText;
 	public float scoreCounts, highScoreCounts, pointPerSecond;
 	public bool scoreIncreasing;
+	public bool coinDoublePoints;
 	
 	// Use this for initialization
 	void Start() {
@@ -32,6 +33,6 @@ public class ScoreManager : MonoBehaviour {
 	}
 
 	public void AddScore(int point) {
-		scoreCounts += point;
+		scoreCounts += coinDoublePoints ? point * 2 : point;
 	}
 }

@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour {
 
 	public GameManager gameManager;
 
+	public AudioSource jumpSound, deathSound;
+
 	// Use this for initialization
 	void Start () {
 		myRigidbody = GetComponent<Rigidbody2D>();
@@ -59,7 +61,8 @@ public class PlayerController : MonoBehaviour {
 		myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
 		
 		// Jump (Space and left key of mouse)
-		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
+		if (isActiveAndEnabled && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
+			jumpSound.Play();
 			if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
 				stopJumpping = false;
@@ -95,6 +98,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D other) {
 		if (other.gameObject.CompareTag("KillBox")) {
+			deathSound.Play();
 			gameManager.RestartGame();
 			moveSpeed = moveSpeedOrigin;
 			speedMilestoneCounts = speedMilestoneCountsOrigin;
