@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252f0546452ed4e69b7de742f2d55291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreText: {fileID: 748744402}
 --- !u!4 &154789140
 Transform:
   m_ObjectHideFlags: 0
@@ -510,7 +511,7 @@ MonoBehaviour:
   spikeGenerateThreshold: 15
   spikePooler: {fileID: 1962256188}
   powerUpHeight: 4
-  powerUpAppearThreshold: 10
+  powerUpAppearThreshold: 5
   powerUpPooler: {fileID: 1702164247}
 --- !u!4 &316393761
 Transform:
@@ -2810,7 +2811,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9639968d27efa4f3b841282e0bbe6644, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.25
   m_Pitch: 1
   Loop: 0
   Mute: 0

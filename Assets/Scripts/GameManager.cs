@@ -13,12 +13,13 @@ public class GameManager : MonoBehaviour {
     private ObjectDestroyer[] objectDestroyers;
     private ScoreManager scoreManager;
     public DeathMenu deathMenu;
+    private PowerUpManager powerUpManager;
 
     // Use this for initialization
     void Start () {
         platformGeneratorStartPoint = platformGenerator.position;
         playerStartPoint = playerController.transform.position;
-
+        powerUpManager = FindObjectOfType<PowerUpManager>();
         scoreManager = FindObjectOfType<ScoreManager>();
     }
 
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ResetGame() {
+        powerUpManager.InActivePowerUpMode();
         deathMenu.gameObject.SetActive(false);
         objectDestroyers = FindObjectsOfType<ObjectDestroyer>();
         for (int i = 0; i < objectDestroyers.Length; i++) {

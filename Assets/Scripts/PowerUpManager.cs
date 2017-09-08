@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour {
 
+    public Text scoreText;
     private bool doublePointMode;
     private bool spikeProffMode;
 
@@ -32,17 +34,20 @@ public class PowerUpManager : MonoBehaviour {
 
             if (doublePointMode) {
                 scoreManager.coinDoublePoints = true;
+                scoreText.GetComponent<Text>().color = new Color(1f, 0.9f, 0f);
             }
 
             if (spikeProffMode) {
                 platformGenerator.spikeGenerateThreshold = 0f;
+                scoreText.GetComponent<Text>().color = Color.white;
             }
 
             if (powerUpLengthCounter < 0) {
+                scoreText.GetComponent<Text>().color = Color.white;
                 platformGenerator.spikeGenerateThreshold = normalSpikeRate;
                 scoreManager.coinDoublePoints = false;
-//				doublePointMode = false;
-//				spikeProffMode = false;
+                doublePointMode = false;
+                spikeProffMode = false;
                 powerUpActive = false;
             }
         }
@@ -62,5 +67,9 @@ public class PowerUpManager : MonoBehaviour {
                 }
             }
         }
+    }
+
+    public void InActivePowerUpMode() {
+        powerUpLengthCounter = 0;
     }
 }
