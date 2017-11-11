@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ScoreController : ProjectComponent {
 
-    public float scorePerSecond;
     public bool doubleScoreMode, scoreIncreasing;
 
     private ScoreModel scoreModel;
@@ -18,7 +17,7 @@ public class ScoreController : ProjectComponent {
     // Update is called once per frame
     void Update() {
         if (scoreIncreasing) {
-            scoreModel.score += scorePerSecond * Time.deltaTime;
+            scoreModel.score += scoreModel.scorePerSecond * Time.deltaTime;
         }
 
         // update canvas view

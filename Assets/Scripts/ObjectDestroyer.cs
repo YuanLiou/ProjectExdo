@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ObjectDestroyer : MonoBehaviour {
 
-    public GameObject platformDescructionPoint;
+    private GameObject platformDescructionPoint;
 
     // Use this for initialization
     void Start () {

@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class PickupPoint : ProjectComponent {
-    public int score;
+public class DiamondView : ProjectComponent {
+
+    private DiamondModel diamondModel;
     private ScoreController scoreController;
     private SoundController soundController;
 
     // Use this for initialization
     void Start() {
+        diamondModel = app.model.diamondModel;
         scoreController = app.controller.scoreController;
         soundController = app.controller.soundController;
     }
@@ -17,7 +19,7 @@ public class PickupPoint : ProjectComponent {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.name.Equals("Player")) {
             soundController.PlayPickCoinSound();
-            scoreController.AddScore(score);
+            scoreController.AddScore(diamondModel.score);
             gameObject.SetActive(false);
         }
     }

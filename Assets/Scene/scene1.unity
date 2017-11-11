@@ -764,7 +764,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 423818504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 147.9, y: 143.5, z: 0}
+  m_LocalPosition: {x: 149.9, y: 143.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768626509}
@@ -1071,7 +1071,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 634348328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -307.5, y: 109.8, z: 0}
+  m_LocalPosition: {x: -309.5, y: 109.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2047228412}
@@ -1298,7 +1298,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 748744400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -200.58, y: 143.5, z: 0}
+  m_LocalPosition: {x: -202.58, y: 143.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1768626509}
@@ -1953,6 +1953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 50
+  scorePerSecond: 5
 --- !u!1 &1191670056
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,7 +2841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91179c618e694faabd8674d076cc488, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scorePerSecond: 5
   doubleScoreMode: 0
   scoreIncreasing: 0
 --- !u!1 &1639590600
@@ -3200,6 +3200,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!1 &1715095188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1715095190}
+  - component: {fileID: 1715095189}
+  m_Layer: 0
+  m_Name: DiamondModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1715095189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1715095188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27050660322704c7c9305f004e3d0bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 15
+--- !u!4 &1715095190
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1715095188}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2017328620}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732996239
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,7 +3478,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1768626505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 359.5, y: 177.5, z: 0}
+  m_LocalPosition: {x: 361.5, y: 177.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 748744401}
@@ -4037,6 +4078,7 @@ Transform:
   m_Children:
   - {fileID: 1180014569}
   - {fileID: 1682395375}
+  - {fileID: 1715095190}
   m_Father: {fileID: 1732996240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4053,6 +4095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1682395376}
   scoreModel: {fileID: 1180014570}
+  diamondModel: {fileID: 1715095189}
 --- !u!1 &2047228411
 GameObject:
   m_ObjectHideFlags: 0

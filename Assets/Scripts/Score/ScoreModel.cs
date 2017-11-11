@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ScoreModel : ProjectComponent {
     public float score;
+    public float scorePerSecond;
     private float highScoreCounts;
 
     public float HighScoreCounts {

@@ -6,5 +6,6 @@ public class ProjectModel : ProjectComponent {
 
     public GameModel gameModel;
     public ScoreModel scoreModel;
+    public DiamondModel diamondModel;
 
 }

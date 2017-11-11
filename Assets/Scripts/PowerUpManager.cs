@@ -15,15 +15,12 @@ public class PowerUpManager : ProjectComponent {
     private ScoreController scoreController;
     private PlatformGenerator platformGenerator;
 
-    private float normalScorePerSecond;
     private float normalSpikeRate;
 
     // Use this for initialization
     void Start () {
         scoreController = app.controller.scoreController;
         platformGenerator = FindObjectOfType<PlatformGenerator>();
-
-        normalScorePerSecond = scoreController.scorePerSecond;
         normalSpikeRate = platformGenerator.spikeGenerateThreshold;
     }
 
