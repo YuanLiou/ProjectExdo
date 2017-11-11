@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : ProjectComponents {
     public float moveSpeed;
     private float moveSpeedOrigin;
 
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     public GameManager gameManager;
 
-    public AudioSource jumpSound, deathSound;
+    public SoundController soundController;
 
     // Use this for initialization
     void Start() {
@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour {
         moveSpeedOrigin = moveSpeed;
         speedMilestoneCountsOrigin = speedMilestoneCounts;
         speedIncreaseMilestoneOrigin = speedIncreaseMilestone;
+
+        soundController = app.controller.soundController;
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour {
         // Jump (Space and left key of mouse)
         if (isActiveAndEnabled &&
             (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
-            jumpSound.Play();
+            soundController.PlayJumpSound();
             if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 stopJumpping = false;
@@ -100,7 +102,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("KillBox")) {
-            deathSound.Play();
+            soundController.PlayPlayerDeathSound();
             gameManager.RestartGame();
             moveSpeed = moveSpeedOrigin;
             speedMilestoneCounts = speedMilestoneCountsOrigin;

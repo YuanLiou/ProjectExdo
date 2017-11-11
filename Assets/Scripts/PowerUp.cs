@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour {
+public class PowerUp : ProjectComponents {
 
     public bool doublePointMode;
     public bool spikeProffMode;
 
     public float powerUpLength;
     private PowerUpManager powerUpManager;
-    private AudioSource powerUpSource;
+    private SoundController soundController;
 
     public Sprite[] diamondSprites;
 
     // Use this for initialization
     void Start () {
         powerUpManager = FindObjectOfType<PowerUpManager>();
-        powerUpSource = GameObject.Find("PowerUpSound").GetComponent<AudioSource>();
+        soundController = app.controller.soundController;
     }
 
     private void Awake() {
@@ -34,7 +34,7 @@ public class PowerUp : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.name.Equals("Player")) {
-            powerUpSource.Play();
+            soundController.PlayPowerUpSound();
             powerUpManager.ActivePowerUpMode(doublePointMode, spikeProffMode, powerUpLength);
         }
         gameObject.SetActive(false);

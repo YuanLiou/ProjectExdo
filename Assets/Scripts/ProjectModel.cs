@@ -5,5 +5,6 @@ using UnityEngine;
 public class ProjectModel : ProjectComponents {
 
     public ScoreModel scoreModel;
+    public SoundModel soundModel;
 
 }
