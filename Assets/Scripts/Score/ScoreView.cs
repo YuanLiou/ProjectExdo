@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreView : ProjectComponents {
+public class ScoreView : ProjectComponent {
 
     public Text scoreText, highScoreText;
 

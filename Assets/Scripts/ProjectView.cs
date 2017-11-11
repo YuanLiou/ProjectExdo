@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectView : ProjectComponents {
+public class ProjectView : ProjectComponent {
 
     public ScoreView scoreView;
 

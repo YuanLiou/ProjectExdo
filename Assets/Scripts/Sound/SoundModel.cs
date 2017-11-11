@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundModel : ProjectComponents {
+public class SoundModel : ProjectComponent {
 
     public AudioSource coinSound;
     public AudioSource jumpSound;

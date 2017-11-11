@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectController : ProjectComponents {
+public class ProjectController : ProjectComponent {
 
     public ScoreController scoreController;
     public SoundController soundController;

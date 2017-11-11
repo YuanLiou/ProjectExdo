@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class PickupPoint : ProjectComponents {
+public class PickupPoint : ProjectComponent {
     public int score;
     private ScoreController scoreController;
     private SoundController soundController;

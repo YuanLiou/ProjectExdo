@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartPoint : ProjectComponents {
+public class StartPoint : ProjectComponent {
 
     public GameObject player;
     public Text readyText;

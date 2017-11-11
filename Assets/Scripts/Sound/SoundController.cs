@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundController : ProjectComponents {
+public class SoundController : ProjectComponent {
 
     private SoundModel soundModel;
 

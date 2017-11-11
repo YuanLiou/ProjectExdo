@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreModel : ProjectComponents {
+public class ScoreModel : ProjectComponent {
     public float score;
     private float highScoreCounts;
 

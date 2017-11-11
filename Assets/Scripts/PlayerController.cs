@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : ProjectComponents {
+public class PlayerController : ProjectComponent {
     public float moveSpeed;
     private float moveSpeedOrigin;
 
@@ -66,15 +66,16 @@ public class PlayerController : ProjectComponents {
         // Jump (Space and left key of mouse)
         if (isActiveAndEnabled &&
             (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
-            soundController.PlayJumpSound();
             if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 stopJumpping = false;
+                soundController.PlayJumpSound();
             } else if (canDoubleJumping) {
                 canDoubleJumping = false;
                 jumpTimeCounter = jumpTime;
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                 stopJumpping = false;
+                soundController.PlayJumpSound();
             }
         }
 

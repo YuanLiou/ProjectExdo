@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUpManager : ProjectComponents {
+public class PowerUpManager : ProjectComponent {
 
     public Text scoreText;
     private bool doublePointMode;

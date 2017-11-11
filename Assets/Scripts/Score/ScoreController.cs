@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreController : ProjectComponents {
+public class ScoreController : ProjectComponent {
 
     public float scorePerSecond;
     public bool doubleScoreMode, scoreIncreasing;

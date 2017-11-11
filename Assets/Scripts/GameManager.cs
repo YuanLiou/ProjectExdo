@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : ProjectComponents {
+public class GameManager : ProjectComponent {
 
     public Transform platformGenerator;
     private Vector3 platformGeneratorStartPoint;

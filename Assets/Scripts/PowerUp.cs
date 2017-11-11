@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : ProjectComponents {
+public class PowerUp : ProjectComponent {
 
     public bool doublePointMode;
     public bool spikeProffMode;
