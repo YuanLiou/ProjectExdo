@@ -7,5 +7,6 @@ public class ProjectView : ProjectComponent {
     public ScoreView scoreView;
     public DeathMenuView deathMenuView;
     public PauseMenuView pauseMenuView;
+    public Sound sound;
 
 }

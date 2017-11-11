@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class SoundController : ProjectComponent {
 
-    private SoundModel soundModel;
+    private Sound sound;
 
     // Use this for initialization
     void Start() {
-        soundModel = app.model.soundModel;
+        sound = app.view.sound;
     }
 
     public void PlayPickCoinSound() {
-        Play(soundModel.coinSound);
+        Play(sound.coinSound);
     }
 
     public void PlayJumpSound() {
-        Play(soundModel.jumpSound);
+        Play(sound.jumpSound);
     }
 
     public void PlayPlayerDeathSound() {
-        Play(soundModel.deathSound);
+        Play(sound.deathSound);
     }
 
     public void PlayPowerUpSound() {
-        Play(soundModel.powerUpSound);
+        Play(sound.powerUpSound);
     }
 
     private void Play(AudioSource audioSource) {

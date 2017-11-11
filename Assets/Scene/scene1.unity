@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 207384900}
   - component: {fileID: 207384901}
   m_Layer: 0
-  m_Name: SoundModel
+  m_Name: Sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,7 +453,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 207384899}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -461,8 +461,8 @@ Transform:
   - {fileID: 452932585}
   - {fileID: 1763909205}
   - {fileID: 1705879891}
-  m_Father: {fileID: 2017328620}
-  m_RootOrder: 1
+  m_Father: {fileID: 1260987182}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &207384901
 MonoBehaviour:
@@ -2296,6 +2296,7 @@ Transform:
   m_Children:
   - {fileID: 414199711}
   - {fileID: 1768626509}
+  - {fileID: 207384900}
   m_Father: {fileID: 1732996240}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2313,6 +2314,7 @@ MonoBehaviour:
   scoreView: {fileID: 414199712}
   deathMenuView: {fileID: 1488329846}
   pauseMenuView: {fileID: 718593086}
+  sound: {fileID: 207384901}
 --- !u!1 &1268357143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3032,7 +3034,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2017328620}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1682395376
 MonoBehaviour:
@@ -4034,7 +4036,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1180014569}
-  - {fileID: 207384900}
   - {fileID: 1682395375}
   m_Father: {fileID: 1732996240}
   m_RootOrder: 0
@@ -4052,7 +4053,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameModel: {fileID: 1682395376}
   scoreModel: {fileID: 1180014570}
-  soundModel: {fileID: 207384901}
 --- !u!1 &2047228411
 GameObject:
   m_ObjectHideFlags: 0
