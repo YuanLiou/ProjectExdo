@@ -3,4 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectController : ProjectComponents {
+
+    public ScoreController scoreController;
+
 }

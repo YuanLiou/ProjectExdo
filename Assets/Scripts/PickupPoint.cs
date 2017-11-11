@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
-public class PickupPoint : MonoBehaviour {
+public class PickupPoint : ProjectComponents {
     public int score;
-    private ScoreManager scoreManager;
+    private ScoreController scoreController;
     private AudioSource coinSound;
 
     // Use this for initialization
     void Start() {
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreController = app.controller.scoreController;
         coinSound = GameObject.Find("CoinSound").GetComponent<AudioSource>();
     }
 
@@ -21,7 +21,7 @@ public class PickupPoint : MonoBehaviour {
             }
             coinSound.Play();
 
-            scoreManager.AddScore(score);
+            scoreController.AddScore(score);
             gameObject.SetActive(false);
         }
     }

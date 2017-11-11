@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartPoint : MonoBehaviour {
+public class StartPoint : ProjectComponents {
 
     public GameObject player;
     public Text readyText;
     public float readyTextBlinkSpeed;
-    private ScoreManager scoreManager;
+    private ScoreController scoreController;
 
     // Use this for initialization
     void Start () {
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreController = app.controller.scoreController;
         StartCoroutine(GameStartWaiting());
     }
 
@@ -26,6 +26,6 @@ public class StartPoint : MonoBehaviour {
 
         readyText.enabled = false;
         player.SetActive(true);
-        scoreManager.scoreIncreasing = true;
+        scoreController.scoreIncreasing = true;
     }
 }

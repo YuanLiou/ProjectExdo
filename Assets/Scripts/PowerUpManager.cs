@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PowerUpManager : MonoBehaviour {
+public class PowerUpManager : ProjectComponents {
 
     public Text scoreText;
     private bool doublePointMode;
@@ -12,18 +12,18 @@ public class PowerUpManager : MonoBehaviour {
     private bool powerUpActive;
     private float powerUpLengthCounter;
 
-    private ScoreManager scoreManager;
+    private ScoreController scoreController;
     private PlatformGenerator platformGenerator;
 
-    private float normalPointPerSecond;
+    private float normalScorePerSecond;
     private float normalSpikeRate;
 
     // Use this for initialization
     void Start () {
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreController = app.controller.scoreController;
         platformGenerator = FindObjectOfType<PlatformGenerator>();
 
-        normalPointPerSecond = scoreManager.pointPerSecond;
+        normalScorePerSecond = scoreController.scorePerSecond;
         normalSpikeRate = platformGenerator.spikeGenerateThreshold;
     }
 
@@ -33,7 +33,7 @@ public class PowerUpManager : MonoBehaviour {
             powerUpLengthCounter -= Time.deltaTime;
 
             if (doublePointMode) {
-                scoreManager.coinDoublePoints = true;
+                scoreController.doubleScoreMode = true;
                 scoreText.GetComponent<Text>().color = new Color(1f, 0.9f, 0f);
             }
 
@@ -45,7 +45,7 @@ public class PowerUpManager : MonoBehaviour {
             if (powerUpLengthCounter < 0) {
                 scoreText.GetComponent<Text>().color = Color.white;
                 platformGenerator.spikeGenerateThreshold = normalSpikeRate;
-                scoreManager.coinDoublePoints = false;
+                scoreController.doubleScoreMode = false;
                 doublePointMode = false;
                 spikeProffMode = false;
                 powerUpActive = false;

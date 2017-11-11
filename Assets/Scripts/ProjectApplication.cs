@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class ProjectApplication : MonoBehaviour {
 
+    public ProjectModel model;
+    public ProjectController controller;
+    public ProjectView view;
 
-
-    // Use this for initialization
-    void Start() { }
-
-    // Update is called once per frame
-    void Update() { }
 }

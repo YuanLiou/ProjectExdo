@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : ProjectComponents {
 
     public Transform platformGenerator;
     private Vector3 platformGeneratorStartPoint;
@@ -11,20 +11,21 @@ public class GameManager : MonoBehaviour {
     private Vector3 playerStartPoint;
 
     private ObjectDestroyer[] objectDestroyers;
-    private ScoreManager scoreManager;
     public DeathMenu deathMenu;
     private PowerUpManager powerUpManager;
+
+    private ScoreController scoreController;
 
     // Use this for initialization
     void Start () {
         platformGeneratorStartPoint = platformGenerator.position;
         playerStartPoint = playerController.transform.position;
         powerUpManager = FindObjectOfType<PowerUpManager>();
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreController = app.controller.scoreController;
     }
 
     public void RestartGame() {
-        scoreManager.scoreIncreasing = false;
+        scoreController.scoreIncreasing = false;
         playerController.gameObject.SetActive(false);
         deathMenu.gameObject.SetActive(true);
     }
@@ -41,7 +42,7 @@ public class GameManager : MonoBehaviour {
         platformGenerator.position = platformGeneratorStartPoint;
         playerController.gameObject.SetActive(true);
 
-        scoreManager.scoreCounts = 0;
-        scoreManager.scoreIncreasing = true;
+        scoreController.ResetScore();
+        scoreController.scoreIncreasing = true;
     }
 }
