@@ -6,5 +6,7 @@ public class ProjectController : ProjectComponent {
 
     public ScoreController scoreController;
     public SoundController soundController;
+    public DeathMenuController deathMenuController;
+    public PauseMenuController pauseMenuController;
 
 }

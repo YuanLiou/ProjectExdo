@@ -32,6 +32,7 @@ public class PlayerController : ProjectComponent {
     public GameManager gameManager;
 
     public SoundController soundController;
+    private GameModel gameModel;
 
     // Use this for initialization
     void Start() {
@@ -45,6 +46,7 @@ public class PlayerController : ProjectComponent {
         speedIncreaseMilestoneOrigin = speedIncreaseMilestone;
 
         soundController = app.controller.soundController;
+        gameModel = app.model.gameModel;
     }
 
     // Update is called once per frame
@@ -64,7 +66,7 @@ public class PlayerController : ProjectComponent {
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
 
         // Jump (Space and left key of mouse)
-        if (isActiveAndEnabled &&
+        if (isActiveAndEnabled && !gameModel.isPause &&
             (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))) {
             if (isOnGround) {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
