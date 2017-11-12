@@ -15,4 +15,12 @@ public class ScoreView : ProjectComponent {
     public void SetHighScoreText(String highScore) {
         highScoreText.text = "High Score: " + highScore;
     }
+
+    public void SetDoubleScoreTextColor() {
+        scoreText.GetComponent<Text>().color = new Color(1f, 0.9f, 0f);
+    }
+
+    public void ResetScoreTextColor() {
+        scoreText.GetComponent<Text>().color = Color.white;
+    }
 }

@@ -47,7 +47,6 @@ public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallbac
         for (int i = 0; i < objectDestroyers.Length; i++) {
             objectDestroyers[i].gameObject.SetActive(false);
         }
-
         playerController.transform.position = playerStartPoint;
         platformGenerator.position = platformGeneratorStartPoint;
         playerController.gameObject.SetActive(true);

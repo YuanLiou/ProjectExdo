@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectModel : ProjectComponent {
-
     public GameModel gameModel;
     public ScoreModel scoreModel;
-    public DiamondModel diamondModel;
-
 }

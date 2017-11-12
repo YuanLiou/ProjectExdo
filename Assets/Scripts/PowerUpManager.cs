@@ -4,24 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PowerUpManager : ProjectComponent {
-
-    public Text scoreText;
-    private bool doublePointMode;
-    private bool spikeProffMode;
-
     private bool powerUpActive;
     private float powerUpLengthCounter;
 
+    private GameModel gameModel;
     private ScoreController scoreController;
     private PlatformGenerator platformGenerator;
+    private ScoreView scoreView;
 
-    private float normalSpikeRate;
+    private float defaultSpikeRate;
 
     // Use this for initialization
     void Start () {
+        gameModel = app.model.gameModel;
         scoreController = app.controller.scoreController;
+        scoreView = app.view.scoreView;
         platformGenerator = FindObjectOfType<PlatformGenerator>();
-        normalSpikeRate = platformGenerator.spikeGenerateThreshold;
+        defaultSpikeRate = platformGenerator.spikeGenerateThreshold;
     }
 
     // Update is called once per frame
@@ -29,34 +28,32 @@ public class PowerUpManager : ProjectComponent {
         if (powerUpActive) {
             powerUpLengthCounter -= Time.deltaTime;
 
-            if (doublePointMode) {
+            if (gameModel.extraPlayerState == ExtraPlayerState.DOULBE_SCORE) {
                 scoreController.doubleScoreMode = true;
-                scoreText.GetComponent<Text>().color = new Color(1f, 0.9f, 0f);
+                scoreView.SetDoubleScoreTextColor();
             }
 
-            if (spikeProffMode) {
+            if (gameModel.extraPlayerState == ExtraPlayerState.SPIKE_PROFF) {
                 platformGenerator.spikeGenerateThreshold = 0f;
-                scoreText.GetComponent<Text>().color = Color.white;
+                scoreView.ResetScoreTextColor();
             }
 
             if (powerUpLengthCounter < 0) {
-                scoreText.GetComponent<Text>().color = Color.white;
-                platformGenerator.spikeGenerateThreshold = normalSpikeRate;
+                platformGenerator.spikeGenerateThreshold = defaultSpikeRate;
                 scoreController.doubleScoreMode = false;
-                doublePointMode = false;
-                spikeProffMode = false;
                 powerUpActive = false;
+                scoreView.ResetScoreTextColor();
+                gameModel.ResetExtraPlayerState();
             }
         }
     }
 
-    public void ActivePowerUpMode(bool doublePointMode, bool spikeProffMode, float length) {
-        this.doublePointMode = doublePointMode;
-        this.spikeProffMode = spikeProffMode;
-        this.powerUpLengthCounter = length;
+    public void ActivePowerUpMode(ExtraPlayerState superPower, float length) {
+        gameModel.extraPlayerState = superPower;
+        powerUpLengthCounter = length;
         powerUpActive = true;
 
-        if (spikeProffMode) {
+        if (superPower == ExtraPlayerState.SPIKE_PROFF) {
             GameObject[] killboxes = GameObject.FindGameObjectsWithTag("KillBox");
             foreach (GameObject killbox in killboxes) {
                 if (killbox.name.StartsWith("Spike")) {
@@ -67,6 +64,7 @@ public class PowerUpManager : ProjectComponent {
     }
 
     public void InActivePowerUpMode() {
+        gameModel.ResetExtraPlayerState();
         powerUpLengthCounter = 0;
     }
 }

@@ -11,7 +11,7 @@ public class DiamondView : ProjectComponent {
 
     // Use this for initialization
     void Start() {
-        diamondModel = app.model.diamondModel;
+        diamondModel = GetComponent<DiamondModel>();
         scoreController = app.controller.scoreController;
         soundController = app.controller.soundController;
     }
