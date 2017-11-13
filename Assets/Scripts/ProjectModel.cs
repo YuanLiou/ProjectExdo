@@ -5,4 +5,5 @@ using UnityEngine;
 public class ProjectModel : ProjectComponent {
     public GameModel gameModel;
     public ScoreModel scoreModel;
+    public SceneObjectModel sceneObjectModel;
 }

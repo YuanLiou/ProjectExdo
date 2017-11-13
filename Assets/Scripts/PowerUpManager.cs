@@ -56,7 +56,7 @@ public class PowerUpManager : ProjectComponent {
         if (superPower == ExtraPlayerState.SPIKE_PROFF) {
             GameObject[] killboxes = GameObject.FindGameObjectsWithTag("KillBox");
             foreach (GameObject killbox in killboxes) {
-                if (killbox.name.StartsWith("Spike")) {
+                if (killbox.GetComponent<SpikeView>() != null) {
                     killbox.SetActive(false);
                 }
             }

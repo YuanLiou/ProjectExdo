@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DiamondsGenerator : MonoBehaviour {
-    public ObjectPooler diamondPooler;
-    public float distancesBetweenDiamonds;
+public class DiamondsGenerator : ProjectComponent {
+    private SceneObjectModel sceneObjectModel;
+
+    void Start() {
+        sceneObjectModel = app.model.sceneObjectModel;
+    }
 
     public void SpawnDiamonds(Vector3 spawnPosition) {
-        GameObject diamond = diamondPooler.GetPoolObject();
+        float distancesBetweenDiamonds = sceneObjectModel.distancesBetweenDiamonds;
+
+        GameObject diamond = sceneObjectModel.diamondPool.GetPoolObject();
         diamond.transform.position = spawnPosition;
         diamond.SetActive(true);
 
-        GameObject leftDiamond = diamondPooler.GetPoolObject();
+        GameObject leftDiamond = sceneObjectModel.diamondPool.GetPoolObject();
         leftDiamond.transform.position = new Vector3(spawnPosition.x - distancesBetweenDiamonds, spawnPosition.y, spawnPosition.z);
         leftDiamond.SetActive(true);
 
-        GameObject rightDiamond = diamondPooler.GetPoolObject();
+        GameObject rightDiamond = sceneObjectModel.diamondPool.GetPoolObject();
         rightDiamond.transform.position = new Vector3(spawnPosition.x + distancesBetweenDiamonds, spawnPosition.y, spawnPosition.z);
         rightDiamond.SetActive(true);
     }

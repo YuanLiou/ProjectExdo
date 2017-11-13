@@ -8,5 +8,6 @@ public class ProjectController : ProjectComponent {
     public SoundController soundController;
     public DeathMenuController deathMenuController;
     public PauseMenuController pauseMenuController;
+    public DiamondsGenerator diamondsGenerator;
 
 }
