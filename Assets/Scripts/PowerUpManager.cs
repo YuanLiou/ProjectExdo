@@ -12,15 +12,12 @@ public class PowerUpManager : ProjectComponent {
     private PlatformGenerator platformGenerator;
     private ScoreView scoreView;
 
-    private float defaultSpikeRate;
-
     // Use this for initialization
     void Start () {
         gameModel = app.model.gameModel;
         scoreController = app.controller.scoreController;
         scoreView = app.view.scoreView;
-        platformGenerator = FindObjectOfType<PlatformGenerator>();
-        defaultSpikeRate = platformGenerator.spikeGenerateThreshold;
+        platformGenerator = app.controller.platformGenerator;
     }
 
     // Update is called once per frame
@@ -34,12 +31,12 @@ public class PowerUpManager : ProjectComponent {
             }
 
             if (gameModel.extraPlayerState == ExtraPlayerState.SPIKE_PROFF) {
-                platformGenerator.spikeGenerateThreshold = 0f;
+                platformGenerator.StopSpawnSpike();
                 scoreView.ResetScoreTextColor();
             }
 
             if (powerUpLengthCounter < 0) {
-                platformGenerator.spikeGenerateThreshold = defaultSpikeRate;
+                platformGenerator.StartSpawnSpike();
                 scoreController.doubleScoreMode = false;
                 powerUpActive = false;
                 scoreView.ResetScoreTextColor();

@@ -9,5 +9,7 @@ public class ProjectController : ProjectComponent {
     public DeathMenuController deathMenuController;
     public PauseMenuController pauseMenuController;
     public DiamondsGenerator diamondsGenerator;
-
+    public PlatformGenerator platformGenerator;
+    public CameraController cameraController;
+    public PowerUpManager powerUpManager;
 }

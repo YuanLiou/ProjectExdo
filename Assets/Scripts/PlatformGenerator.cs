@@ -25,6 +25,7 @@ public class PlatformGenerator : ProjectComponent {
 
     // Spike
     public float spikeGenerateThreshold;
+    private float defaultSpikeGenerateThreshold;
 
     // Use this for initialization
     void Start() {
@@ -38,6 +39,8 @@ public class PlatformGenerator : ProjectComponent {
 
         minHeight = transform.position.y;   // same as PlatformGenerator's Height
         maxHeight = platformMaxHeightPoint.position.y;
+
+        defaultSpikeGenerateThreshold = spikeGenerateThreshold;
     }
 
     // Update is called once per frame
@@ -86,5 +89,13 @@ public class PlatformGenerator : ProjectComponent {
 
             transform.position = new Vector3(transform.position.x + (platformWidths[platformSelector] / 2), heightChange, transform.position.z);
         }
+    }
+
+    public void StopSpawnSpike() {
+        spikeGenerateThreshold = 0f;
+    }
+
+    public void StartSpawnSpike() {
+        spikeGenerateThreshold = defaultSpikeGenerateThreshold;
     }
 }

@@ -22,7 +22,7 @@ public class PowerUpDiamondController : ProjectComponent {
     }
 
     void Start() {
-        powerUpManager = FindObjectOfType<PowerUpManager>();
+        powerUpManager = app.controller.powerUpManager;
     }
 
     public void PowerUp() {
