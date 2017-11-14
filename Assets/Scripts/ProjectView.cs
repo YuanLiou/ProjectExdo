@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ProjectView : ProjectComponent {
 
-    public ScoreView scoreView;
+    public GameHUDView gameHudView;
     public DeathMenuView deathMenuView;
     public PauseMenuView pauseMenuView;
+    public PlayerView playerView;
     public Sound sound;
 
 }

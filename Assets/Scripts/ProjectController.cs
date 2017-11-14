@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectController : ProjectComponent {
 
     public ScoreController scoreController;
+    public BlinkingTextController blinkingTextController;
     public SoundController soundController;
     public DeathMenuController deathMenuController;
     public PauseMenuController pauseMenuController;
@@ -12,4 +13,5 @@ public class ProjectController : ProjectComponent {
     public PlatformGenerator platformGenerator;
     public CameraController cameraController;
     public PowerUpManager powerUpManager;
+    public PlayerController playerController;
 }

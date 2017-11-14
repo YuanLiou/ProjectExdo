@@ -14,7 +14,20 @@ public class GameModel : ProjectComponent {
     public bool isPause;
     public readonly string mainMenuName = "main_menu";
 
+    // Level
+    public float playerSpeedMutiplier;
+    public float speedIncreaseMilestone;
+    private float speedIncreaseMilestoneOrigin;
+
+    void Start() {
+        speedIncreaseMilestoneOrigin = speedIncreaseMilestone;
+    }
+
     public void ResetExtraPlayerState() {
         extraPlayerState = ExtraPlayerState.NONE;
+    }
+
+    public void ResetLevel() {
+        speedIncreaseMilestone = speedIncreaseMilestoneOrigin;
     }
 }

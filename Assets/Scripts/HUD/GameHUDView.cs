@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreView : ProjectComponent {
+public class GameHUDView : ProjectComponent {
 
     public Text scoreText, highScoreText;
+    public Text readyText;
 
     public void SetScoreText(String score) {
         scoreText.text = "Score: " + score;

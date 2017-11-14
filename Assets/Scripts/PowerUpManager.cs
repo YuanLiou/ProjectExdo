@@ -10,13 +10,13 @@ public class PowerUpManager : ProjectComponent {
     private GameModel gameModel;
     private ScoreController scoreController;
     private PlatformGenerator platformGenerator;
-    private ScoreView scoreView;
+    private GameHUDView gameHudView;
 
     // Use this for initialization
     void Start () {
         gameModel = app.model.gameModel;
         scoreController = app.controller.scoreController;
-        scoreView = app.view.scoreView;
+        gameHudView = app.view.gameHudView;
         platformGenerator = app.controller.platformGenerator;
     }
 
@@ -27,19 +27,19 @@ public class PowerUpManager : ProjectComponent {
 
             if (gameModel.extraPlayerState == ExtraPlayerState.DOULBE_SCORE) {
                 scoreController.doubleScoreMode = true;
-                scoreView.SetDoubleScoreTextColor();
+                gameHudView.SetDoubleScoreTextColor();
             }
 
             if (gameModel.extraPlayerState == ExtraPlayerState.SPIKE_PROFF) {
                 platformGenerator.StopSpawnSpike();
-                scoreView.ResetScoreTextColor();
+                gameHudView.ResetScoreTextColor();
             }
 
             if (powerUpLengthCounter < 0) {
                 platformGenerator.StartSpawnSpike();
                 scoreController.doubleScoreMode = false;
                 powerUpActive = false;
-                scoreView.ResetScoreTextColor();
+                gameHudView.ResetScoreTextColor();
                 gameModel.ResetExtraPlayerState();
             }
         }

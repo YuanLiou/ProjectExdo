@@ -6,6 +6,7 @@ public class ScoreModel : ProjectComponent {
     public float score;
     public float scorePerSecond;
     private float highScoreCounts;
+    private float defaultScore;
 
     public float HighScoreCounts {
         get { return highScoreCounts; }
@@ -13,6 +14,7 @@ public class ScoreModel : ProjectComponent {
 
     // Use this for initialization
     void Start() {
+        defaultScore = score;
         if (PlayerPrefs.HasKey("HighScores")) {
             highScoreCounts = PlayerPrefs.GetFloat("HighScores");
         }
@@ -24,5 +26,9 @@ public class ScoreModel : ProjectComponent {
             highScoreCounts = score;
             PlayerPrefs.SetFloat("HighScores", highScoreCounts);
         }
+    }
+
+    public void ResetScore() {
+        score = defaultScore;
     }
 }

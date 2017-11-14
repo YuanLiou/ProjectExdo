@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : ProjectComponent {
 
     public CameraView mainCameraView;
-    public PlayerController player;    // TODO:: Refactor to PlayerView
+    public PlayerView player;
     private Vector3 lastPlayerPosition;
     private float distanceToMove;
 	

@@ -7,11 +7,11 @@ public class ScoreController : ProjectComponent {
     public bool doubleScoreMode, scoreIncreasing;
 
     private ScoreModel scoreModel;
-    private ScoreView scoreView;
+    private GameHUDView gameHudView;
 
     void Start() {
         scoreModel = app.model.scoreModel;
-        scoreView = app.view.scoreView;
+        gameHudView = app.view.gameHudView;
     }
 
     // Update is called once per frame
@@ -21,12 +21,12 @@ public class ScoreController : ProjectComponent {
         }
 
         // update canvas view
-        scoreView.SetScoreText(Mathf.Round(scoreModel.score).ToString());
-        scoreView.SetHighScoreText(Mathf.Round(scoreModel.HighScoreCounts).ToString());
+        gameHudView.SetScoreText(Mathf.Round(scoreModel.score).ToString());
+        gameHudView.SetHighScoreText(Mathf.Round(scoreModel.HighScoreCounts).ToString());
     }
 
     public void ResetScore() {
-        scoreModel.score = 0;
+        scoreModel.ResetScore();
     }
 
     public void AddScore(int score) {

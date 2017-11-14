@@ -10,7 +10,6 @@ public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallbac
     private Vector3 platformGeneratorStartPoint;
 
     public PlayerController playerController;
-    private Vector3 playerStartPoint;
 
     private ObjectDestroyer[] objectDestroyers;
     private PowerUpManager powerUpManager;
@@ -18,23 +17,26 @@ public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallbac
     private ScoreController scoreController;
     private DeathMenuController deathMenuController;
     private PauseMenuController pauseMenuController;
+    private BlinkingTextController blinkingTextController;
 
     // Use this for initialization
     void Start () {
         gameModel = app.model.gameModel;
         platformGeneratorStartPoint = platformGenerator.position;
-        playerStartPoint = playerController.transform.position;
-        powerUpManager = FindObjectOfType<PowerUpManager>();
+        powerUpManager = app.controller.powerUpManager;
         scoreController = app.controller.scoreController;
+        blinkingTextController = app.controller.blinkingTextController;
         deathMenuController = app.controller.deathMenuController;
         deathMenuController.SetDeathMenuCallback(this);
         pauseMenuController = app.controller.pauseMenuController;
         pauseMenuController.SetPauseMenuCallback(this);
+
+        ShowReadyText();
     }
 
     public void RestartGame() {
         scoreController.scoreIncreasing = false;
-        playerController.gameObject.SetActive(false);
+        playerController.PlayerActive(false);
         deathMenuController.ShowDeathMenu(true);
         pauseMenuController.ShowPauseButton(false);
     }
@@ -51,7 +53,22 @@ public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallbac
         platformGenerator.position = platformGeneratorStartPoint;
         playerController.gameObject.SetActive(true);
 
+        scoreController.scoreIncreasing = false;
         scoreController.ResetScore();
+        playerController.gameObject.SetActive(false);
+        ShowReadyText();
+    }
+
+    private void ShowReadyText() {
+        blinkingTextController.SetReadyTextBlinking(true);
+        StartCoroutine(GameStartWaiting());
+    }
+
+    IEnumerator GameStartWaiting() {
+        yield return new WaitForSeconds(3f);
+
+        blinkingTextController.SetReadyTextBlinking(false);
+        playerController.PlayerActive(true);
         scoreController.scoreIncreasing = true;
     }
 
