@@ -3,21 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallback {
+public class GameController : ProjectComponent, DeathMenuCallback, PauseMenuCallback {
 
     public Transform platformGenerator;
     private GameModel gameModel;
     private Vector3 platformGeneratorStartPoint;
 
     public PlayerController playerController;
-
-    private ObjectDestroyer[] objectDestroyers;
     private PowerUpManager powerUpManager;
-
     private ScoreController scoreController;
     private DeathMenuController deathMenuController;
     private PauseMenuController pauseMenuController;
     private BlinkingTextController blinkingTextController;
+    private bool prepare;
 
     // Use this for initialization
     void Start () {
@@ -44,32 +42,36 @@ public class GameManager : ProjectComponent, DeathMenuCallback, PauseMenuCallbac
     public void ResetGame() {
         powerUpManager.InActivePowerUpMode();
         deathMenuController.ShowDeathMenu(false);
-        pauseMenuController.ShowPauseButton(true);
-        objectDestroyers = FindObjectsOfType<ObjectDestroyer>();
+        ObjectDestroyer[] objectDestroyers = FindObjectsOfType<ObjectDestroyer>();
         for (int i = 0; i < objectDestroyers.Length; i++) {
             objectDestroyers[i].gameObject.SetActive(false);
         }
-        playerController.transform.position = playerStartPoint;
+        playerController.ResetPlayerPosition();
         platformGenerator.position = platformGeneratorStartPoint;
-        playerController.gameObject.SetActive(true);
 
         scoreController.scoreIncreasing = false;
         scoreController.ResetScore();
-        playerController.gameObject.SetActive(false);
+        playerController.PlayerActive(false);
         ShowReadyText();
     }
 
     private void ShowReadyText() {
         blinkingTextController.SetReadyTextBlinking(true);
+        if (prepare) {
+           StopAllCoroutines();
+        }
         StartCoroutine(GameStartWaiting());
     }
 
     IEnumerator GameStartWaiting() {
+        prepare = true;
         yield return new WaitForSeconds(3f);
 
         blinkingTextController.SetReadyTextBlinking(false);
         playerController.PlayerActive(true);
         scoreController.scoreIncreasing = true;
+        pauseMenuController.ShowPauseButton(true);
+        prepare = false;
     }
 
     // region DeathMenuCallback start

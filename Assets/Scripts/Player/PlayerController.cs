@@ -7,7 +7,7 @@ public class PlayerController : ProjectComponent {
     private PlayerView playerView;
     private SoundController soundController;
     private GameModel gameModel;
-    public GameManager gameManager;
+    public GameController gameController;
 
     private float jumpTimeCounter;
     private bool stopJumpping;
@@ -86,14 +86,14 @@ public class PlayerController : ProjectComponent {
 
     public void Die() {
         soundController.PlayPlayerDeathSound();
-        gameManager.RestartGame();
+        gameController.RestartGame();
         playerModel.ResetToDefault();
         gameModel.ResetLevel();
 
         speedMilestoneCounts = speedMilestoneCountsOrigin;
     }
 
-    public void ResetPosition() {
+    public void ResetPlayerPosition() {
         playerView.transform.position = startPosition;
     }
 }
