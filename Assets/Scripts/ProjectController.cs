@@ -14,4 +14,5 @@ public class ProjectController : ProjectComponent {
     public CameraController cameraController;
     public PowerUpManager powerUpManager;
     public PlayerController playerController;
+
 }

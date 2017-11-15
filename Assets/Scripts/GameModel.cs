@@ -13,6 +13,7 @@ public class GameModel : ProjectComponent {
     public ExtraPlayerState extraPlayerState;
     public bool isPause;
     public readonly string mainMenuName = "main_menu";
+    public readonly string level1SceneName = "scene1";
 
     // Level
     public float playerSpeedMutiplier;
